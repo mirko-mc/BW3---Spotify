@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+body {
+    display: flex;
+    background-color: black;
+    height: 100vh;
+    color: white;
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+aside,
+main, 
+header {
+    background-color: transparent;
+}
+
+aside,
+main {
+    height: inherit;
+}
+
+aside {
+    width: 25%
+}
+
+main {
+    width: 75%;
+    position: relative;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.bg-dark {
+    border-radius: 15px;
+}
+
+aside ul{
+    padding: 0;
+}
+
+
+aside ul li {
+    list-style-type: none;
+}
+
+aside a {
+    color: white;
+    opacity: 0.8;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+aside .library-btns {
+    display: flex;
+    justify-content: space-between;
+}
+
+aside .navigation-btns ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+aside .navigation-btns ul li{
+    background-color: rgba(255, 255, 255, 0.13);
+    padding: 0.2em 0.5em;
+    border-radius: 15px;
+}
+
+aside .recents ul li{
+    list-style: none;
+    border-radius: 5px;
+}
+
+aside .recents ul li:hover{
+    background-color: rgba(255, 255, 255, 0.13);
+}
+
+aside .recents ul li a{
+    display: flex;
+}
+
+aside .recents ul li img{
+    width: 50px;
+}
+
+aside .recents .search-btns{
+    display:flex;
+    justify-content: space-between;
+}
+
+.collapse {
+    width: 25%;
+}
