@@ -59,7 +59,7 @@ async function getSearch(query) {
 /** aside => artist */
 async function asideArtist() {
   artist = null;
-  for (let i = 0; i <= 5; i++) {
+  for (let i = 0; i <= 20; i++) {
     if ((await getArtist(Math.random() * 10)) === false) {
       console.log("ASIDEARTIST => ho saltato l'elemento perché non esiste");
       i--;
