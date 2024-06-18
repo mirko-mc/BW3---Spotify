@@ -4,6 +4,7 @@ body {
     display: flex;
     background-color: black;
     height: 100vh;
+    overflow: hidden;
     color: white;
     font-family: "Plus Jakarta Sans", sans-serif;
 }
@@ -25,7 +26,17 @@ aside {
 
 main {
     width: 75%;
+    display: flex;
+}
+
+#dynamic-container{
     position: relative;
+}
+
+#dynamic-container,
+#collapse-container,
+aside{
+    margin: 0.5em 0.3em;
 }
 
 header {
@@ -35,16 +46,17 @@ header {
 }
 
 .bg-dark {
-    border-radius: 15px;
+    border-radius: 5px;
 }
-
+ 
 aside ul{
     padding: 0;
+    margin: 0;
 }
-
 
 aside ul li {
     list-style-type: none;
+    padding: 0.5em 0;
 }
 
 aside a {
@@ -54,44 +66,96 @@ aside a {
     font-weight: 700;
 }
 
-aside .library-btns {
+aside .container{
+    padding: 0.8em 1.5em;
+    margin-bottom: 0.4em;
+}
+
+#home-btns i,
+#library-btns i{
+    font-size: 1.4em;
+}
+
+#home-btns span{
+    font-size: 1em;
+    padding: 0 1.5em;
+}
+
+#library-btns{
     display: flex;
     justify-content: space-between;
 }
 
-aside .navigation-btns ul {
-    display: flex;
-    justify-content: space-around;
+#library-btns span {
+    padding: 0 1em
 }
 
-aside .navigation-btns ul li{
-    background-color: rgba(255, 255, 255, 0.13);
-    padding: 0.2em 0.5em;
+#navigation-btns {
+    display: flex;
+}
+
+#navigation-btns li{
     border-radius: 15px;
+    padding: 0.3em 0.5em;
+    background-color: rgba(255, 255, 255, 0.2);
+    font-size: 0.9em;
+    margin: 0 auto;
 }
 
-aside .recents ul li{
-    list-style: none;
-    border-radius: 5px;
+#library-btns,
+#navigation-btns,
+#recent {
+    margin-bottom: 0.5em;
 }
 
-aside .recents ul li:hover{
-    background-color: rgba(255, 255, 255, 0.13);
-}
-
-aside .recents ul li a{
-    display: flex;
-}
-
-aside .recents ul li img{
-    width: 50px;
-}
-
-aside .recents .search-btns{
+#recent #search-btns{
     display:flex;
     justify-content: space-between;
 }
 
+#recent #search-btns span {
+    padding: 0 0.5em;
+    font-size: 0.8em;
+    font-weight: 400;
+}
+
+#recent ul li{
+    list-style: none;
+    border-radius: 5px;
+}
+
+#recent ul:nth-of-type(2) li a,
+#recent ul:nth-of-type(3) li a {
+    padding: 0.5em;
+    display: flex;
+}
+
+#recent ul:nth-of-type(2) li a:hover,
+#recent ul:nth-of-type(3) li a:hover{
+    background-color: rgba(255, 255, 255, 0.13);
+    padding: 0.5em;
+    border-radius: 5px;
+}
+
+
+#recent ul:nth-of-type(3) li img{
+    height: 50px;
+    margin-right: 0.5em;
+    border-radius: 50%;
+}
+
+#recent ul li img{
+    height: 50px;
+    margin-right: 0.5em;
+    border-radius: 5px;
+}
+
+main header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
 .collapse {
-    width: 25%;
+    width: 40%;
 }
