@@ -1,3 +1,4 @@
+
 const api = "https://striveschool-api.herokuapp.com/api/deezer/album/"
 let album = null
 
@@ -15,6 +16,23 @@ async function getAlbum(id) {
         tracks: data.tracks.data,
         releaseDate: data.release_date
     }
-
-    console.log(album)
+    songs = null
+    album.tracks.map((track,i) => {
+        songs += `<tr>
+                    <th scope="row">${i+1}</th>
+                    <td>${track.title}</td>
+                    <td>${track.artist.name}</td>
+                    <td>${track.duration}</td>
+                </tr>`
+    })
+    document.getElementById("albumTable").classList.remove("d-none")
+    document.getElementById("tracks").innerHTML = songs
+   album = `<div class="card" style="width: 18rem;">
+  <img src="${album.coverXl}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">${album.title}</h5>
+  </div>
+</div>`
+document.getElementById("searchResults").innerHTML = album
+    
 }
