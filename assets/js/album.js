@@ -24,7 +24,7 @@ async function getAlbum(id) {
                     <th scope="row">${i + 1}</th>
                     <td>${track.title}</td>
                     <td>${track.artist.name}</td>
-                    <td>${track.duration}</td>
+                    <td>${track.duration} seconds</td>
                     <td><audio controls>
   <source src=${track.preview} type="audio/mp3">
 </audio></td>
@@ -46,7 +46,7 @@ async function getAlbum(id) {
         <h1 class="card-title">${album.title}</h1>
         <span class="card-text"><small class="text-body-secondary">${album.name}</small></span>
         <span class="card-text"><small class="text-body-secondary">• ${album.releaseDate}</small></span>
-        <span class="card-text"><small class="text-body-secondary">• ${album.tracks.length} brani</small></span>
+        <span class="card-text"><small class="text-body-secondary">• ${album.tracks.length} tracks</small></span>
         
       </div>
     </div>
@@ -56,3 +56,4 @@ async function getAlbum(id) {
     document.getElementById("searchResults").innerHTML = album
 
 }
+
