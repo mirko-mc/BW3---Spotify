@@ -41,9 +41,7 @@ async function getSearch(query) {
   }));
   artist = data.data.map((ALBUM) => ({
     id: ALBUM.artist.id,
-    pictureArtist: ALBUM.artist.picture_small,
-    artist: ALBUM.artist.name,
-    artistName: ALBUM.artist.name,
+    name: ALBUM.artist.name,
     pictureSmall: ALBUM.artist.picture_small,
     pictureMedium: ALBUM.artist.picture_medium,
     pictureBig: ALBUM.artist.picture_big,
