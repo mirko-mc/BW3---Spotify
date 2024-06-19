@@ -30,4 +30,4 @@ ATTENZIONE! NON DOVETE CREARE UNA PAGINA PER OGNI ARTISTA!!!
 Create UNA pagina (album.html), e popolatela dinamicamente tramite l'id dell'album su cui avete cliccato.
 SUGGERIMENTO: URLSearchParams
 Endpoint: https://striiveschool-api.herokuapp.com/api/deezer/artist/{id}
-Example: https://striveschool-api.herokuapp.com/api/deezer/album/75621062
+Example: https://striveschool-api.herokuapp.com/api/deezer/artist/412
