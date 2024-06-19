@@ -7,14 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
   asideArtist();
 });
 
-async function getArtist(query) {
-  const RESPONSE = await fetch(URLARTIST + query);
+async function getArtist(id) {
+  const RESPONSE = await fetch(URLARTIST + id);
   if (RESPONSE.status === 500) return false;
-
-  //   await getArtist(Math.random() * 10);
-  // } else {
   //   // console.log("GETARTIST => response\n", response);
-  // }
   const data = await RESPONSE.json();
   // console.log("GETARTIST => data\n", data);
   artist = {
@@ -59,13 +55,19 @@ async function getSearch(query) {
 /** aside => artist */
 async function asideArtist() {
   artist = null;
-  for (let i = 0; i <= 20; i++) {
-    if ((await getArtist(Math.random() * 10)) === false) {
+  let random = null;
+  const RANDOMHISTORY = [];
+  for (let i = 0; i < 13; i++) {
+    do {
+      random = parseInt(Math.random() * 30);
+    } while (RANDOMHISTORY.includes(random));
+    RANDOMHISTORY.push(random);
+    if ((await getArtist(random)) === false) {
       console.log("ASIDEARTIST => ho saltato l'elemento perché non esiste");
       i--;
       continue;
     }
-    document.getElementById("recents-artists-aside-list").innerHTML += `
+    document.getElementById("recent-artists-aside-list").innerHTML += `
     <li>
       <a href="">
       <img src="${artist.pictureSmall}" alt="${artist.artistName}">
