@@ -1,10 +1,13 @@
 const URLSEARCH = "https://striveschool-api.herokuapp.com/api/deezer/search?q=";
-let URLARTIST = "https://striveschool-api.herokuapp.com/api/deezer/artist/";
+const URLARTIST = "https://striveschool-api.herokuapp.com/api/deezer/artist/";
+const URLALBUM = "https://striveschool-api.herokuapp.com/api/deezer/album/";
 let searchs = null;
 let artist = null;
+let album = null;
 
 document.addEventListener("DOMContentLoaded", () => {
   asideArtist();
+  // albumCards();
 });
 
 async function getArtist(id) {
@@ -14,11 +17,12 @@ async function getArtist(id) {
   const data = await RESPONSE.json();
   // console.log("GETARTIST => data\n", data);
   artist = {
+    id: data["id"],
     artistName: data["name"],
     pictureSmall: data["picture_small"],
-    coverMedium: data["picture_medium"],
-    coverBig: data["picture_big"],
-    coverXl: data["picture_xl"],
+    pictureMedium: data["picture_medium"],
+    pictureBig: data["picture_big"],
+    pictureXl: data["picture_xl"],
   };
   // console.log("GETARTIST => artist\n", artist);
   return true;
@@ -52,6 +56,25 @@ async function getSearch(query) {
   // console.log("GETSEARCH => search\n", searchs);
 }
 
+async function getAlbum(id) {
+  const RESPONSE = await fetch(URLALBUM + id);
+  if (RESPONSE.status === 500) return false;
+  //   // console.log("GETARTIST => response\n", response);
+  const data = await RESPONSE.json();
+  album = {
+    idAlbum: data["id"],
+    title: data["title"],
+    coverSmall: data["picture_small"],
+    coverMedium: data["picture_medium"],
+    coverBig: data["picture_big"],
+    coverXl: data["picture_xl"],
+    artistName: data["artist"]["name"],
+    idArtist: data["artist"]["id"],
+  };
+  // console.log("GETARTIST => artist\n", artist);
+  return true;
+}
+
 /** aside => artist */
 async function asideArtist() {
   artist = null;
@@ -59,7 +82,7 @@ async function asideArtist() {
   const RANDOMHISTORY = [];
   for (let i = 0; i < 13; i++) {
     do {
-      random = parseInt(Math.random() * 30);
+      random = parseInt(Math.random() * 300);
     } while (RANDOMHISTORY.includes(random));
     RANDOMHISTORY.push(random);
     if ((await getArtist(random)) === false) {
@@ -69,7 +92,7 @@ async function asideArtist() {
     }
     document.getElementById("recent-artists-aside-list").innerHTML += `
     <li>
-      <a href="">
+      <a href="./artist.html/${artist.id}">
       <img src="${artist.pictureSmall}" alt="${artist.artistName}">
       <div>
         <div>${artist.artistName}</div>
@@ -96,3 +119,35 @@ async function collapseAlbum() {
 
 /** collapse => informazioni sull'artista */
 async function collapseArtistInfo() {}
+
+async function albumCards() {
+  // album = null;
+  let random = null;
+  const RANDOMHISTORY = [];
+  for (let i = 0; i < 5; i++) {
+    do {
+      random = parseInt(Math.random() * 300);
+    } while (RANDOMHISTORY.includes(random));
+    RANDOMHISTORY.push(random);
+    console.log(random);
+    if ((await getAlbum(random)) === false) {
+      console.log("ALBUMCARDS => ho saltato l'elemento perché non esiste");
+      i--;
+      continue;
+    }
+    document.getElementById("cardsContainer").innerHTML += `
+  <div class="card"">
+    <div class="card-img-container">
+			<a href="./album.html/${album.idAlbum}"><img src="${album.coverMedium}" class="card-img-top" alt="ALBUM IMG"></a>
+		</div>
+		<div class="card-body">
+			<a href="./album.html/${album.idAlbum}">
+			  <h5 class="card-title">${album.title}</h5>
+			</a>
+			<a href="./album.html/${album.idArtist}">
+			  <p class="card-text">${album.artistName}</p>
+			</a>
+		</div>
+`;
+  }
+}
