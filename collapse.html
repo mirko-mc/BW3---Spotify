@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotify : Music for everyone</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      class="ref"
+    />
+    <link rel="icon" href="./assets/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" class="ref" />
+  </head>
+  <body>
+
+
+<div class="container" style="float: right;">
+  <div class="wrapper">
+    <div class="banner-image"> </div>
+    <h6> Dill Diyan Gallan</h6>
+    <p>By Rahat Fateh Ali Khan,
+      .</p>
+      <div class="banner-image2"> </div>
+
+   </div>
+   
+    
+ </div>
+
+</div>
+<div class="bottom">
+<div class="music-player">
+  <div class="album">
+    <img src="assets/album_picture.jpeg" class="album-img" />
+    <h6 class="album-daylight">
+      Daylight<br />
+      <p class="album-affan">Affan khan</p>
+    </h6>
+    <img
+      src="assets/album_icon1.png"
+      class="album-img"
+      style="height: 2rem; opacity: 0.9"
+    />
+    <img
+      src="assets/album_icon2.png"
+      class="album-img"
+      style="height: 2.5rem"
+    />
+  </div>
+  <div class="player">
+    <div class="player-controls">
+      <img src="assets/player_icon1.png" class="player-control-icon" />
+      <img src="assets/player_icon2.png" class="player-control-icon" />
+      <img
+        src="assets/player_icon3.png"
+        class="player-control-icon"
+        style="opacity: 1; height: 2rem"
+      />
+      <!-- <i class="fa-solid fa-2x fa-play-circle" id="masterPlay"></i> -->
+      <img src="assets/player_icon4.png" class="player-control-icon" />
+      <img src="assets/player_icon5.png" class="player-control-icon" />
+    </div>
+    <div class="playback-bar">
+      <span class="curr-time">00:00</span>
+      <input
+        type="range"
+        min="0"
+        max="100"
+        step="1"
+        class="progress-bar"
+      />
+      <span class="tot-time">3:33</span>
+    </div>
+  </div>
+  <div class="controls">
+    <!-- <img src="assets/controls_icon1.png" class="controls-icon"> -->
+    <i class="fa-sharp fa-solid fa-music"></i>
+    <img src="assets/controls_icon3.png" class="controls-icons" />
+    <img src="assets/controls_icon4.png" class="controls-icons" />
+    <!-- <img src="assets/controls_icon5.png" class="controls-icons-speaker" /> -->
+    <i class="fa-solid fa-volume-high"></i>
+    <input type="range" step="10" class="vol-bar" />
+  </div>
+</div>
+</div>
+
+<script>
+"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js";
+</script>
+<script src="app.js"></script>
+</body>
+</html>
