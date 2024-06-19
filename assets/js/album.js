@@ -1,6 +1,6 @@
 
 const api = "https://striveschool-api.herokuapp.com/api/deezer/album/"
-let album = null
+
 const params = new URLSearchParams(window.location.search)
 
 console.log(params)
