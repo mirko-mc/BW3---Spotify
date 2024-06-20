@@ -33,21 +33,22 @@ async function albumClick(albumCard) {
     const ALBUM = albums[i];
     // const ARTIST = artists[i];
     if (ALBUM.id === albumCard.dataset.idalbum) {
-      const ARTIST = await getArtist(artists[i]);
+      await getArtist(ALBUM.artist.id);
+      console.log(artists);
       collapsedTitle(ALBUM.title);
       songCard(
         ALBUM.id,
-        ARTIST.id,
+        artists.id,
         ALBUM.title,
-        ARTIST.name,
+        artists.name,
         ALBUM.coverMedium
       );
       artistCard(
         ALBUM.id,
-        ARTIST.pictureMedium,
-        ARTIST.name,
+        artists.pictureMedium,
+        artists.name,
         ALBUM.id,
-        ARTIST.nFan
+        artists.nFan
       );
       break;
     }

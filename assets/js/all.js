@@ -13,7 +13,7 @@ async function getArtist(id) {
   const data = await RESPONSE.json();
   // console.log("GETARTIST => data\n", data);
   artists = {
-    id: `${data["id"]}`,
+    id: data["id"],
     name: data["name"],
     pictureSmall: data["picture_small"],
     pictureMedium: data["picture_medium"],
@@ -21,7 +21,7 @@ async function getArtist(id) {
     pictureXl: data["picture_xl"],
     nFan: `${data["nb_fan"]}`,
   };
-  console.log("GETARTIST => artists\n", );
+  // console.log("GETARTIST => artists\n", artists));
   return true;
 }
 
@@ -65,14 +65,14 @@ async function getAlbum(id) {
   //   // console.log("GETARTIST => response\n", response);
   const data = await RESPONSE.json();
   albums = {
-    idAlbum: `${data["id"]}`,
+    idAlbum: data["id"],
     title: data["title"],
     coverSmall: data["picture_small"],
     coverMedium: data["picture_medium"],
     coverBig: data["picture_big"],
     coverXl: data["picture_xl"],
     artistName: data["artist"]["name"],
-    idArtist: `${data["artist"]["id"]}`,
+    idArtist: data["artist"]["id"],
   };
   // console.log("GETARTIST => artist\n", artist);
   return true;
