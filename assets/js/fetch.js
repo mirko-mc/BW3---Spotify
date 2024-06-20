@@ -6,7 +6,7 @@ async function getArtist(id) {
   // console.log("GETARTIST => data\n", data);
   artists = {
     id: data["id"],
-    artistName: data["name"],
+    name: data["name"],
     pictureSmall: data["picture_small"],
     pictureMedium: data["picture_medium"],
     pictureBig: data["picture_big"],
@@ -40,14 +40,13 @@ async function getSearch(query) {
     duration: ALBUM.duration,
     preview: ALBUM.preview,
   }));
-  artists = data.data.map((ALBUM) => ({
-    id: `${ALBUM.artist.id}`,
-    name: ALBUM.artist.name,
-    pictureSmall: ALBUM.artist.picture_small,
-    pictureMedium: ALBUM.artist.picture_medium,
-    pictureBig: ALBUM.artist.picture_big,
-    pictureXl: ALBUM.artist.picture_xl,
-    nFan: ALBUM.artist.nb_fan,
+  artists = data.data.map((ARTIST) => ({
+    id: `${ARTIST.artist.id}`,
+    name: ARTIST.artist.name,
+    pictureSmall: ARTIST.artist.picture_small,
+    pictureMedium: ARTIST.artist.picture_medium,
+    pictureBig: ARTIST.artist.picture_big,
+    pictureXl: ARTIST.artist.picture_xl,
   }));
   // console.log("GETSEARCH => search\n", searchs);
 }

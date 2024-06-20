@@ -49,7 +49,7 @@ async function albumCards() {
 			<a href="./album.html?id=${ALBUM.id}">
 			  <h5 class="card-title">${ALBUM.title}</h5>
 			</a>
-			<a href="./album.html?id=${ARTIST.id}">
+			<a href="./artist.html?id=${ARTIST.id}">
 			  <p class="card-text">${ARTIST.name}</p>
 			</a>
 		</div>
@@ -61,26 +61,42 @@ async function albumCards() {
 async function albumClick(albumCard) {
   for (let i = 0; i < albums.length; i++) {
     const ALBUM = albums[i];
-    const ARTIST = artists[i];
+    let ARTIST = null;
+    await getArtist(ALBUM.idArtist).then((ARTIST) => {
+      ARTIST = artists[i];
+    });
     if (ALBUM.id === albumCard.dataset.idalbum) {
-      collapsedTitle(ALBUM.title)
-      songCard(ALBUM.id, ARTIST.id, ALBUM.title, ARTIST.name, ALBUM.coverMedium);
+      collapsedTitle(ALBUM.title);
+      songCard(
+        ALBUM.id,
+        ARTIST.id,
+        ALBUM.title,
+        ARTIST.name,
+        ALBUM.coverMedium
+      );
+      artistCard(
+        ALBUM.id,
+        ARTIST.pictureMedium,
+        ARTIST.name,
+        ALBUM.id,
+        ARTIST.nFan
+      );
       break;
     }
   }
 }
 
 /** collapse => album */
-async function collapsedTitle(title, name, cover) {
+async function collapsedTitle(title) {
   document.getElementById("collapsed-title").innerHTML = `
   <h2>${title}</h2>
   `;
 }
 
-function songCard(idAlbum, idArtist, albumTitle, artistName, cover){
+function songCard(idAlbum, idArtist, albumTitle, artistName, cover) {
   document.getElementById("song-card").innerHTML = `
   <div class="card-img-container">
-      <a href=""><img src="${cover}" class="card-img-top" alt="ALBUM IMG"></a>
+      <a href="./album.html?id=${idAlbum}"><img src="${cover}" class="card-img-top" alt="ALBUM IMG"></a>
     </div>
     <div class="card-body">
       <a href="./album.html?id=${idAlbum}">
@@ -94,21 +110,20 @@ function songCard(idAlbum, idArtist, albumTitle, artistName, cover){
       </div>
     </div>
   `;
-
 }
 
-function artistCard(){
+function artistCard(idArtist, picture, artistName, idAlbum, artistFan) {
   document.getElementById("artist-card").innerHTML = `
   <div class="card-img-container">
-      <a href=""><img src="assets/images/provaimmagineartista.jfif" class="card-img-top" alt="ALBUM IMG"></a>
+      <a href="./artist.html?=${idArtist}"><img src="${picture}" class="card-img-top" alt="ALBUM IMG"></a>
     </div>
     <div class="card-body">
-      <a href="">
-        <h5 class="card-title">Fort Minor</h5> <!--NOME ARTISTA-->
+      <a href="./artist.html?=${idArtist}">
+        <h5 class="card-title">${artistName}</h5>
       </a>
-      <a href="">
-        <p class="card-text">ALBUM</p> <!--ALBUM-->
-        <p class="card-text">4,112,683 listeners</p> <!--QUI POTREMMO INSERIRE UN NUMERO CASUALE-->
+      <a href="./album.html?id=${idAlbum}">
+        <p class="card-text">${artistName}</p>
+        <p class="card-text">${artistFan} listeners</p>
       </a>
       <div class="card-button-overlay">
         <button class="btn">Follow</button>
