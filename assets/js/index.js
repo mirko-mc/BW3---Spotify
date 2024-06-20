@@ -16,10 +16,10 @@ async function albumCards() {
 			<a href="#"><img src="${ALBUM.coverMedium}" class="card-img-top" alt="ALBUM IMG"></a>
 		</div>
 		<div class="card-body">
-			<a href="./album.html?id=${ALBUM.id}">
+			<a href="./album.html?idalbum=${ALBUM.id}&idartist=${ARTIST.id}">
 			  <h5 class="card-title">${ALBUM.title}</h5>
 			</a>
-			<a href="./artist.html?id=${ARTIST.id}">
+			<a href="./album.html?idalbum=${ALBUM.id}&idartist=${ARTIST.id}">
 			  <p class="card-text">${ARTIST.name}</p>
 			</a>
 		</div>
@@ -31,10 +31,8 @@ async function albumCards() {
 async function albumClick(albumCard) {
   for (let i = 0; i < albums.length; i++) {
     const ALBUM = albums[i];
-    // const ARTIST = artists[i];
+    await getArtist(albumCard.dataset.idartist);
     if (ALBUM.id === albumCard.dataset.idalbum) {
-      await getArtist(ALBUM.artist.id);
-      console.log(artists);
       collapsedTitle(ALBUM.title);
       songCard(
         ALBUM.id,
