@@ -146,3 +146,38 @@ function artistCard(idArtist, picture, artistName, idAlbum, artistFan) {
     </div>
   `;
 }
+
+async function albumClick(albumCard) {
+  // && albumCard.dataset.idartist === undefined
+  let idAlbum = "";
+  let idArtist = "";
+  if (albumCard=== undefined) {
+    idAlbum = new URLSearchParams(window.location.search).get("idalbum");
+    idArtist = new URLSearchParams(window.location.search).get("idartist");
+  } else {
+    localStorage.setItem("idAlbum", albumCard.dataset.idalbum);
+    localStorage.setItem("idArtist", albumCard.dataset.idartist);
+  }
+  for (let i = 0; i < albums.length; i++) {
+    const ALBUM = albums[i];
+    await getArtist(localStorage.getItem("idArtist"));
+    if (ALBUM.id === localStorage.getItem("idAlbum")) {
+      collapsedTitle(ALBUM.title);
+      songCard(
+        ALBUM.id,
+        artists.id,
+        ALBUM.title,
+        artists.name,
+        ALBUM.coverMedium
+      );
+      artistCard(
+        ALBUM.id,
+        artists.pictureMedium,
+        artists.name,
+        ALBUM.id,
+        artists.nFan
+      );
+      break;
+    }
+  }
+}

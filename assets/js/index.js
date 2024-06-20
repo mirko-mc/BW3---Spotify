@@ -28,27 +28,4 @@ async function albumCards() {
   }
 }
 
-async function albumClick(albumCard) {
-  for (let i = 0; i < albums.length; i++) {
-    const ALBUM = albums[i];
-    await getArtist(albumCard.dataset.idartist);
-    if (ALBUM.id === albumCard.dataset.idalbum) {
-      collapsedTitle(ALBUM.title);
-      songCard(
-        ALBUM.id,
-        artists.id,
-        ALBUM.title,
-        artists.name,
-        ALBUM.coverMedium
-      );
-      artistCard(
-        ALBUM.id,
-        artists.pictureMedium,
-        artists.name,
-        ALBUM.id,
-        artists.nFan
-      );
-      break;
-    }
-  }
-}
+
