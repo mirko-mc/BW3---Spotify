@@ -43,6 +43,8 @@ aside {
 
 .container ul li {
     list-style-type: none;
+    display: flex;
+    align-items: center;
 }
 
 aside ul {
@@ -70,8 +72,6 @@ aside .btn {
 }
 
 aside .container {
-    padding: 0.8em 1.5em;
-    margin-bottom: 0.4em;
     position: relative;
 }
 
@@ -85,7 +85,6 @@ aside .container nav:first-of-type {
 aside .container nav:nth-of-type(2) {
     height: 65vh;
     overflow-y: scroll;
-    padding: 0.3em;
 }
 
 aside .container nav:nth-of-type(2)::-webkit-scrollbar,
@@ -113,11 +112,6 @@ aside .container nav:nth-of-type(2)::-webkit-scrollbar-thumb,
     padding: 0 1.5em;
 }
 
-#library-btns {
-    display: flex;
-    justify-content: space-between;
-}
-
 #library-btns span {
     padding: 0 1em
 }
@@ -126,7 +120,6 @@ aside .container nav:nth-of-type(2)::-webkit-scrollbar-thumb,
     display: flex;
     justify-content: space-around;
 }
-
 
 .navigation-btns li {
     border-radius: 15px;
@@ -147,7 +140,8 @@ aside .container nav:nth-of-type(2)::-webkit-scrollbar-thumb,
     margin-bottom: 0.5em;
 }
 
-#recent #search-btns {
+#recent #search-btns,
+#library-btns  {
     display: flex;
     justify-content: space-between;
 }
@@ -164,15 +158,19 @@ aside .container nav:nth-of-type(2)::-webkit-scrollbar-thumb,
     padding: 0;
 }
 
-#recent ul:nth-of-type(2) li a,
-#recent ul:nth-of-type(3) li a {
-    padding: 0.5em;
+#recent ul li a {
     display: flex;
+    align-items: center;
+}
+
+#recent ul:nth-of-type(2) li,
+#recent ul:nth-of-type(3) li {
+    padding: 0.5em;
     font-size: 0.9em;
 }
 
-#recent ul:nth-of-type(2) li a:hover,
-#recent ul:nth-of-type(3) li a:hover {
+#recent ul:nth-of-type(2) li:hover,
+#recent ul:nth-of-type(3) li:hover {
     background-color: rgba(255, 255, 255, 0.13);
     padding: 0.5em;
     border-radius: 5px;
@@ -193,8 +191,7 @@ aside .container nav:nth-of-type(2)::-webkit-scrollbar-thumb,
 
 #collapse-container {
     width: 40%;
-    position: relative;
-    overflow-x: hidden;
+    height: 85vh;
 }
 
 #collapse-container,
@@ -306,13 +303,14 @@ aside .container nav:nth-of-type(2)::-webkit-scrollbar-thumb,
     opacity: 0.8;
 }
 
+#merch-card img{
+    width: 30px;
+}
+
 main #dynamic-container {
     position: relative;
 }
 
-main #dynamic-container header {
-    align-items: center;
-}
 
 main #dynamic-container header {
     width: 100%;
@@ -321,7 +319,9 @@ main #dynamic-container header {
     right: 0%;
     width: 100%;
     background-color: #121212;
-    height: 20vh;
+    height: max-content;
+    align-items: center;
+
 }
 
 main #dynamic-container header div {
@@ -403,8 +403,7 @@ main #dynamic-container header div {
 #browse-categories .card:first-of-type,
 #browse-categories .card:nth-of-type(6),
 #browse-categories .card:nth-of-type(11),
-#browse-categories .card:nth-of-type(16)
-    {
+#browse-categories .card:nth-of-type(16) {
     background-color: #dc148c
 }
 
@@ -416,7 +415,7 @@ main #dynamic-container header div {
 }
 
 
-#browse-categories .card:nth-of-type(3), 
+#browse-categories .card:nth-of-type(3),
 #browse-categories .card:nth-of-type(8),
 #browse-categories .card:nth-of-type(13),
 #browse-categories .card:nth-of-type(18) {
@@ -424,14 +423,14 @@ main #dynamic-container header div {
 }
 
 
-#browse-categories .card:nth-of-type(4), 
-#browse-categories .card:nth-of-type(9), 
+#browse-categories .card:nth-of-type(4),
+#browse-categories .card:nth-of-type(9),
 #browse-categories .card:nth-of-type(14) {
     background-color: #1e3264;
 }
 
-#browse-categories .card:nth-of-type(5), 
-#browse-categories .card:nth-of-type(10), 
+#browse-categories .card:nth-of-type(5),
+#browse-categories .card:nth-of-type(10),
 #browse-categories .card:nth-of-type(15) {
     background-color: #d84000;
 }
@@ -473,4 +472,201 @@ main #dynamic-container header div {
     main #dynamic-container header div {
         display: none;
     }
+}
+
+#album-card {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    height: 200px;
+}
+
+#album-card .card-img-container {
+    width: 200px;
+    padding-bottom: 200px;
+}
+
+#album-card .card-img-container img {
+    width: 200px;
+    height: 200px;
+}
+#album-card .card-body {
+    padding-left: 20px;
+}
+
+#album-card .card-text,
+#album-card .card-title{
+    color: white;
+    opacity: 1;
+    font-weight: 900;
+}
+
+#album-card .card-title{
+    transition: none;
+    font-size: 1.7em;
+}
+
+#album-card .card-title:hover{
+    transform: none;
+    text-decoration: none;
+    color: white;
+    cursor: default;
+}
+
+
+#player-buttons img,
+#player-buttons svg{
+    transform: transform 0.3s ease-in-out;
+}
+
+#player-buttons img:hover,
+#player-buttons svg:hover  {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+#player-buttons svg,
+#player-buttons i{
+    margin-left: 1em;
+}
+
+
+#music-player {
+    height: 14vh;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    padding: 2.5em 1em;
+}
+
+.song{
+    display: flex;
+    align-items: center;
+}
+
+.song,
+.extra-controls {
+    width: 30%;
+}
+
+.song #album-cover{
+    width: 60px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.song #album-cover img{
+    width: 100%;
+}
+
+.track-info {
+    margin-left: 1em;
+}
+
+.track-info p{
+    margin-bottom: 0;
+    font-size: 0.8em;
+    font-weight: 700;
+}
+
+.track-info p:hover{
+    text-decoration: underline;
+}
+
+.track-artist {
+    opacity: 0.8;
+}
+
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+}
+
+
+.control-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.control-buttons button{
+    background:none;
+    border: none;
+    color: white;
+    font-size: 1.3em;
+    margin: 0 0.2em;
+    opacity: 0.7;
+}
+
+.control-buttons button:hover{
+    opacity: 1;
+}
+
+.controls .play {
+    font-size: 2em;
+    opacity: 1;
+}
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+
+.current-time, .total-time {
+    font-size: 12px;
+    color: #aaa;
+    margin: 0 5px;
+}
+
+.progress-bar {
+    flex-grow: 1;
+    height: 5px;
+    background-color: #333;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress {
+    width: 40%; 
+    height: 100%;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.extra-controls {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.extra-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.1em;
+    margin: 0 0.1em;
+    opacity: 0.8;
+}
+
+.volume-slider {
+    width: 100px;
+    accent-color: white;
+}
+
+.extra-btn:hover, 
+.volume-slider:hover {
+    accent-color: #1ed760;
+    color: #1ed760;
 }
