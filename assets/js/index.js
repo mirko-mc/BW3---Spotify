@@ -1,11 +1,7 @@
-
-
 document.addEventListener("DOMContentLoaded", async () => {
   await asideArtist();
   await albumCards();
 });
-
-
 
 async function albumCards() {
   let y = 0;
@@ -35,8 +31,9 @@ async function albumCards() {
 async function albumClick(albumCard) {
   for (let i = 0; i < albums.length; i++) {
     const ALBUM = albums[i];
-    const ARTIST = artists[i];
+    // const ARTIST = artists[i];
     if (ALBUM.id === albumCard.dataset.idalbum) {
+      const ARTIST = await getArtist(artists[i]);
       collapsedTitle(ALBUM.title);
       songCard(
         ALBUM.id,
@@ -56,52 +53,3 @@ async function albumClick(albumCard) {
     }
   }
 }
-
-/** collapse => album */
-async function collapsedTitle(title) {
-  document.getElementById("collapsed-title").innerHTML = `
-  <h2>${title}</h2>
-  `;
-}
-
-function songCard(idAlbum, idArtist, albumTitle, artistName, cover) {
-  document.getElementById("song-card").innerHTML = `
-  <div class="card-img-container">
-      <a href="./album.html?id=${idAlbum}"><img src="${cover}" class="card-img-top" alt="ALBUM IMG"></a>
-    </div>
-    <div class="card-body">
-      <a href="./album.html?id=${idAlbum}">
-        <h5 class="card-title">${albumTitle}</h5>
-      </a>
-      <a href="./artist.html?id=${idArtist}">
-        <p class="card-text">${artistName}</p>
-      </a>
-      <div class="card-button-overlay">
-        <i class="bi bi-plus-circle"></i>
-      </div>
-    </div>
-  `;
-}
-
-function artistCard(idArtist, picture, artistName, idAlbum, artistFan) {
-  document.getElementById("artist-card").innerHTML = `
-  <div class="card-img-container">
-      <a href="./artist.html?=${idArtist}"><img src="${picture}" class="card-img-top" alt="ALBUM IMG"></a>
-    </div>
-    <div class="card-body">
-      <a href="./artist.html?=${idArtist}">
-        <h5 class="card-title">${artistName}</h5>
-      </a>
-      <a href="./album.html?id=${idAlbum}">
-        <p class="card-text">${artistName}</p>
-        <p class="card-text">${artistFan} listeners</p>
-      </a>
-      <div class="card-button-overlay">
-        <button class="btn">Follow</button>
-      </div>
-    </div>
-  `;
-}
-
-/** collapse => informazioni sull'artista */
-async function collapseArtistInfo() {}

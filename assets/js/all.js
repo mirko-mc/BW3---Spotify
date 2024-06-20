@@ -13,15 +13,15 @@ async function getArtist(id) {
   const data = await RESPONSE.json();
   // console.log("GETARTIST => data\n", data);
   artists = {
-    id: data["id"],
+    id: `${data["id"]}`,
     name: data["name"],
     pictureSmall: data["picture_small"],
     pictureMedium: data["picture_medium"],
     pictureBig: data["picture_big"],
     pictureXl: data["picture_xl"],
-    nFan: data["nb_fan"],
+    nFan: `${data["nb_fan"]}`,
   };
-  // console.log("GETARTIST => artist\n", artist);
+  console.log("GETARTIST => artists\n", );
   return true;
 }
 
@@ -65,14 +65,14 @@ async function getAlbum(id) {
   //   // console.log("GETARTIST => response\n", response);
   const data = await RESPONSE.json();
   albums = {
-    idAlbum: data["id"],
+    idAlbum: `${data["id"]}`,
     title: data["title"],
     coverSmall: data["picture_small"],
     coverMedium: data["picture_medium"],
     coverBig: data["picture_big"],
     coverXl: data["picture_xl"],
     artistName: data["artist"]["name"],
-    idArtist: data["artist"]["id"],
+    idArtist: `${data["artist"]["id"]}`,
   };
   // console.log("GETARTIST => artist\n", artist);
   return true;
@@ -99,4 +99,50 @@ async function asideArtist() {
     </li>
     `;
   }
+}
+
+/** collapse => album */
+async function collapsedTitle(title) {
+  document.getElementById("collapsed-title").innerHTML = `
+  <h2>${title}</h2>
+  `;
+}
+
+function songCard(idAlbum, idArtist, albumTitle, artistName, cover) {
+  document.getElementById("song-card").innerHTML = `
+  <div class="card-img-container">
+      <a href="./album.html?id=${idAlbum}"><img src="${cover}" class="card-img-top" alt="ALBUM IMG"></a>
+    </div>
+    <div class="card-body">
+      <a href="./album.html?id=${idAlbum}">
+        <h5 class="card-title">${albumTitle}</h5>
+      </a>
+      <a href="./artist.html?id=${idArtist}">
+        <p class="card-text">${artistName}</p>
+      </a>
+      <div class="card-button-overlay">
+        <i class="bi bi-plus-circle"></i>
+      </div>
+    </div>
+  `;
+}
+
+function artistCard(idArtist, picture, artistName, idAlbum, artistFan) {
+  document.getElementById("artist-card").innerHTML = `
+  <div class="card-img-container">
+      <a href="./artist.html?=${idArtist}"><img src="${picture}" class="card-img-top" alt="ALBUM IMG"></a>
+    </div>
+    <div class="card-body">
+      <a href="./artist.html?=${idArtist}">
+        <h5 class="card-title">${artistName}</h5>
+      </a>
+      <a href="./album.html?id=${idAlbum}">
+        <p class="card-text">${artistName}</p>
+        <p class="card-text">${artistFan} listeners</p>
+      </a>
+      <div class="card-button-overlay">
+        <button class="btn">Follow</button>
+      </div>
+    </div>
+  `;
 }
