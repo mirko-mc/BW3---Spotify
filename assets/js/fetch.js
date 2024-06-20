@@ -4,9 +4,9 @@ async function getArtist(id) {
   //   // console.log("GETARTIST => response\n", response);
   const data = await RESPONSE.json();
   // console.log("GETARTIST => data\n", data);
-  artist = {
+  artists = {
     id: data["id"],
-    artistName: data["name"],
+    name: data["name"],
     pictureSmall: data["picture_small"],
     pictureMedium: data["picture_medium"],
     pictureBig: data["picture_big"],
@@ -29,8 +29,8 @@ async function getSearch(query) {
   }
   const data = await response.json();
   // console.log("GETSEARCH => data\n", data.data);
-  album = data.data.map((ALBUM) => ({
-    id: ALBUM.album.id,
+  albums = data.data.map((ALBUM) => ({
+    id: `${ALBUM.album.id}`,
     cover: ALBUM.album.cover,
     coverSmall: ALBUM.album.cover_small,
     coverMedium: ALBUM.album.cover_medium,
@@ -38,15 +38,15 @@ async function getSearch(query) {
     coverXl: ALBUM.album.cover_xl,
     title: ALBUM.album.title,
     duration: ALBUM.duration,
+    preview: ALBUM.preview,
   }));
-  artist = data.data.map((ALBUM) => ({
-    id: ALBUM.artist.id,
-    name: ALBUM.artist.name,
-    pictureSmall: ALBUM.artist.picture_small,
-    pictureMedium: ALBUM.artist.picture_medium,
-    pictureBig: ALBUM.artist.picture_big,
-    pictureXl: ALBUM.artist.picture_xl,
-    nFan: ALBUM.artist.nb_fan,
+  artists = data.data.map((ARTIST) => ({
+    id: `${ARTIST.artist.id}`,
+    name: ARTIST.artist.name,
+    pictureSmall: ARTIST.artist.picture_small,
+    pictureMedium: ARTIST.artist.picture_medium,
+    pictureBig: ARTIST.artist.picture_big,
+    pictureXl: ARTIST.artist.picture_xl,
   }));
   // console.log("GETSEARCH => search\n", searchs);
 }
@@ -56,7 +56,7 @@ async function getAlbum(id) {
   if (RESPONSE.status === 500) return false;
   //   // console.log("GETARTIST => response\n", response);
   const data = await RESPONSE.json();
-  album = {
+  albums = {
     idAlbum: data["id"],
     title: data["title"],
     coverSmall: data["picture_small"],
