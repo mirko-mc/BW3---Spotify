@@ -1,9 +1,4 @@
-const URLSEARCH = "https://striveschool-api.herokuapp.com/api/deezer/search?q=";
-const URLARTIST = "https://striveschool-api.herokuapp.com/api/deezer/artist/";
-const URLALBUM = "https://striveschool-api.herokuapp.com/api/deezer/album/";
-let searchs = null;
-let artists = null;
-let albums = null;
+
 
 document.addEventListener("DOMContentLoaded", () => {
   asideArtist();
@@ -61,10 +56,7 @@ async function albumCards() {
 async function albumClick(albumCard) {
   for (let i = 0; i < albums.length; i++) {
     const ALBUM = albums[i];
-    let ARTIST = null;
-    await getArtist(ALBUM.idArtist).then((ARTIST) => {
-      ARTIST = artists[i];
-    });
+    const ARTIST = artists[i];
     if (ALBUM.id === albumCard.dataset.idalbum) {
       collapsedTitle(ALBUM.title);
       songCard(

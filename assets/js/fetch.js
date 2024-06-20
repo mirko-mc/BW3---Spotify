@@ -1,3 +1,11 @@
+const URLSEARCH = "https://striveschool-api.herokuapp.com/api/deezer/search?q=";
+const URLARTIST = "https://striveschool-api.herokuapp.com/api/deezer/artist/";
+const URLALBUM = "https://striveschool-api.herokuapp.com/api/deezer/album/";
+
+let searchs = null;
+let artists = null;
+let albums = null;
+
 async function getArtist(id) {
   const RESPONSE = await fetch(URLARTIST + id);
   if (RESPONSE.status === 500) return false;
