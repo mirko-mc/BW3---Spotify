@@ -7,21 +7,22 @@ const params = new URLSearchParams(location.search)
 
 let id = params.get('id')
 
-params.set('id', 'Jane');
+params.set('id', id);
 
-console.log(params.toString());
+// console.log(params.toString());
 
 function displayArtist() {
     fetch("https://striveschool-api.herokuapp.com/api/deezer/artist/" + id, {
 
     })
         .then(response => {
+            // console.log(response)
             response.json()
             .then(data => {
                 console.log(data);
                 
                 let mostraArtista = document.getElementById('artist')
-                mostraArtista.innerHTML += 
+                mostraArtista.innerHTML = 
                 `
                         <div class="card col-6">
                             <img src="${data.picture}" class="card-img-top">
