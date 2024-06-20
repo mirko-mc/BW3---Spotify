@@ -27,7 +27,8 @@ async function getAlbum(id) {
     tracks: data["tracks"]["data"],
     release_date: data["release_date"]
   };
-
+  
+  let track = ""
   let songs = "";
   albums.tracks.map((track, i) => {
     songs += `<tr>
@@ -43,22 +44,21 @@ async function getAlbum(id) {
   
   document.getElementById("tracks").innerHTML = songs;
 
-  let albumDetails = `<div class="card mb-3" style="width:100%;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src=${albums.coverXl} class="img-fluid rounded-start" alt="...">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <p class="card-text"><small class="text-body-secondary">Album</small></p>
-          <h1 class="card-title">${albums.title}</h1>
-          <span class="card-text"><small class="text-body-secondary">${albums.artistName}</small></span>
-          <span class="card-text"><small class="text-body-secondary">• ${albums.release_date}</small></span>
-          <span class="card-text"><small class="text-body-secondary">• ${albums.tracks.length} tracks</small></span>
-        </div>
-      </div>
-    </div>
-  </div>`;
+  let albumDetails = `<div class="card" id="album-card">
+                        <div class="card-img-container">
+                            <a href="">
+                                <img src=${albums.coverXl} class="card-img-top" alt="ALBUM IMG">
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Album</p>
+                            <h5 class="card-title">${albums.title}</h5>
+                            <a href="">
+                                <p class="card-text">${albums.artistName}</p>
+                            </a>
+                        </div>
+                    </div>`;
+  
 
   document.getElementById("album-container").innerHTML = albumDetails;
 }
