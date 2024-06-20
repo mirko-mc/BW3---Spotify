@@ -28,7 +28,7 @@ async function getAlbum(id) {
     release_date: data["release_date"]
   };
   
-  let track = ""
+  
   let songs = "";
   albums.tracks.map((track, i) => {
     songs += `<tr>
@@ -53,7 +53,7 @@ async function getAlbum(id) {
                         <div class="card-body">
                             <p class="card-text">Album</p>
                             <h5 class="card-title">${albums.title}</h5>
-                            <a href="">
+                            <a href="./artist.html?id=${albums.idArtist}"">
                                 <p class="card-text">${albums.artistName}</p>
                             </a>
                         </div>
