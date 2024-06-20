@@ -61,10 +61,8 @@ async function albumCards() {
 async function albumClick(albumCard) {
   for (let i = 0; i < albums.length; i++) {
     const ALBUM = albums[i];
-    let ARTIST = null;
-    await getArtist(ALBUM.idArtist).then((ARTIST) => {
-      ARTIST = artists[i];
-    });
+    const ARTIST = artists[i];
+    
     if (ALBUM.id === albumCard.dataset.idalbum) {
       collapsedTitle(ALBUM.title);
       songCard(
