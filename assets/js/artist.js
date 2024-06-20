@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const params = new URLSearchParams(location.search)
 
+
+
 let id = params.get('id')
 
 params.set('id', 'Jane');
@@ -12,7 +14,7 @@ params.set('id', 'Jane');
 console.log(params.toString());
 
 function displayArtist() {
-    fetch("https://striveschool-api.herokuapp.com/api/deezer/artist/75621062", {
+    fetch("https://striveschool-api.herokuapp.com/api/deezer/artist/" + id, {
 
     })
         .then(response => {
