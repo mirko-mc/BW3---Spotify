@@ -77,3 +77,26 @@ async function getAlbum(id) {
   // console.log("GETARTIST => artist\n", artist);
   return true;
 }
+
+/** aside => artist */
+async function asideArtist() {
+  await getSearch("a");
+  // console.log("ASIDEARTIST => album");
+  // console.table(album);
+  // console.log("ASIDEARTIST => artist");
+  // console.table(artist);
+  for (let i = 0; i < 16; i++) {
+    const ARTIST = artists[i];
+    document.getElementById("recent-artists-aside-list").innerHTML += `
+    <li>
+      <a href="./artist.html?id=${ARTIST.id}">
+      <img src="${ARTIST.pictureSmall}" alt="${ARTIST.name}">
+      <div>
+        <div>${ARTIST.name}</div>
+        <div>Artist</div>
+      </div>
+      </a>
+    </li>
+    `;
+  }
+}
