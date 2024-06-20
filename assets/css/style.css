@@ -137,13 +137,15 @@ aside .container nav:nth-of-type(2)::-webkit-scrollbar-thumb,
 #library-btns,
 .navigation-btns,
 #recent {
-    margin-bottom: 0.5em;
+    margin-bottom: 1em;
+    padding-bottom: 1em;
 }
 
 #recent #search-btns,
 #library-btns  {
     display: flex;
     justify-content: space-between;
+    padding: 0.5em;
 }
 
 #recent #search-btns span {
@@ -361,6 +363,13 @@ main #dynamic-container header div {
 
 #dynamic-container section {
     height: 75vh;
+}
+
+#browse-cards h1{
+    font-size: 1.9em;
+    padding: 0 0.7em;
+    line-height: 1em;
+    font-weight: bold;
 }
 
 .cards-container {
