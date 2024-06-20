@@ -2,8 +2,8 @@ const URLSEARCH = "https://striveschool-api.herokuapp.com/api/deezer/search?q=";
 const URLARTIST = "https://striveschool-api.herokuapp.com/api/deezer/artist/";
 const URLALBUM = "https://striveschool-api.herokuapp.com/api/deezer/album/";
 let searchs = null;
-let artist = null;
-let album = null;
+let artists = null;
+let albums = null;
 
 document.addEventListener("DOMContentLoaded", () => {
   asideArtist();
@@ -13,12 +13,12 @@ document.addEventListener("DOMContentLoaded", () => {
 async function asideArtist() {
   await getSearch("a");
   albumCards();
-  console.log("ASIDEARTIST => album");
-  console.table(album);
-  console.log("ASIDEARTIST => artist");
-  console.table(artist);
+  // console.log("ASIDEARTIST => album");
+  // console.table(album);
+  // console.log("ASIDEARTIST => artist");
+  // console.table(artist);
   for (let i = 0; i < 16; i++) {
-    const ARTIST = artist[i];
+    const ARTIST = artists[i];
     document.getElementById("recent-artists-aside-list").innerHTML += `
     <li>
       <a href="./artist.html?id=${ARTIST.id}">
@@ -33,33 +33,17 @@ async function asideArtist() {
   }
 }
 
-/** collapse => album */
-async function collapseAlbum() {
-  await getSearch("queen");
-  const RANDOM = parseInt(Math.random() * searchs.length);
-  const RIGHTASIDE = document.getElementById("rightAside");
-  RIGHTASIDE.innerHTML += `
-              <img src="${searchs[RANDOM].coverBig}" alt="">
-              <h6>${searchs[RANDOM].title}</h6>
-              <p>${searchs[RANDOM].artist}</p>
-              <span class="material-symbols-outlined">check_circle</span>
-              `;
-}
-
-/** collapse => informazioni sull'artista */
-async function collapseArtistInfo() {}
-
 async function albumCards() {
   let y = 0;
   for (let x = 0; x < 4; x++) {
     const CARDSCONTAINER = document.getElementById(`cardsContainer${x + 1}`);
     for (y; y < 16; y++) {
-      const ALBUM = album[y];
-      const ARTIST = artist[y];
+      const ALBUM = albums[y];
+      const ARTIST = artists[y];
       CARDSCONTAINER.innerHTML += `
-  <div class="card"">
+  <div id="albumCard${y}" data-idalbum="${ALBUM.id}" data-idartist="${ARTIST.id}" class="card" onclick="albumClick(this)">
     <div class="card-img-container">
-			<a href="./album.html/${ALBUM.id}"><img src="${ALBUM.coverMedium}" class="card-img-top" alt="ALBUM IMG"></a>
+			<a href="#"><img src="${ALBUM.coverMedium}" class="card-img-top" alt="ALBUM IMG"></a>
 		</div>
 		<div class="card-body">
 			<a href="./album.html?id=${ALBUM.id}">
@@ -73,3 +57,65 @@ async function albumCards() {
     }
   }
 }
+
+async function albumClick(albumCard) {
+  for (let i = 0; i < albums.length; i++) {
+    const ALBUM = albums[i];
+    const ARTIST = artists[i];
+    if (ALBUM.id === albumCard.dataset.idalbum) {
+      collapsedTitle(ALBUM.title)
+      songCard(ALBUM.id, ARTIST.id, ALBUM.title, ARTIST.name, ALBUM.coverMedium);
+      break;
+    }
+  }
+}
+
+/** collapse => album */
+async function collapsedTitle(title, name, cover) {
+  document.getElementById("collapsed-title").innerHTML = `
+  <h2>${title}</h2>
+  `;
+}
+
+function songCard(idAlbum, idArtist, albumTitle, artistName, cover){
+  document.getElementById("song-card").innerHTML = `
+  <div class="card-img-container">
+      <a href=""><img src="${cover}" class="card-img-top" alt="ALBUM IMG"></a>
+    </div>
+    <div class="card-body">
+      <a href="./album.html?id=${idAlbum}">
+        <h5 class="card-title">${albumTitle}</h5>
+      </a>
+      <a href="./artist.html?id=${idArtist}">
+        <p class="card-text">${artistName}</p>
+      </a>
+      <div class="card-button-overlay">
+        <i class="bi bi-plus-circle"></i>
+      </div>
+    </div>
+  `;
+
+}
+
+function artistCard(){
+  document.getElementById("artist-card").innerHTML = `
+  <div class="card-img-container">
+      <a href=""><img src="assets/images/provaimmagineartista.jfif" class="card-img-top" alt="ALBUM IMG"></a>
+    </div>
+    <div class="card-body">
+      <a href="">
+        <h5 class="card-title">Fort Minor</h5> <!--NOME ARTISTA-->
+      </a>
+      <a href="">
+        <p class="card-text">ALBUM</p> <!--ALBUM-->
+        <p class="card-text">4,112,683 listeners</p> <!--QUI POTREMMO INSERIRE UN NUMERO CASUALE-->
+      </a>
+      <div class="card-button-overlay">
+        <button class="btn">Follow</button>
+      </div>
+    </div>
+  `;
+}
+
+/** collapse => informazioni sull'artista */
+async function collapseArtistInfo() {}
