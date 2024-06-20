@@ -24,7 +24,7 @@ function displayArtist() {
                 let mostraArtista = document.getElementById('artist')
                 mostraArtista.innerHTML = 
                 `
-                        <div class="card col-6">
+                        <div class="card col-12">
                             <img src="${data.picture}" class="card-img-top">
                             <div class="card-body">
                                 <h5 class="card-title">${data.name}</h5>
