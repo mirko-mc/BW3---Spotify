@@ -108,7 +108,7 @@ async function collapsedTitle(title) {
   `;
 }
 
-function songCard(idAlbum, idArtist, albumTitle, artistName, cover) {
+async function songCard(idAlbum, idArtist, albumTitle, artistName, cover) {
   document.getElementById("song-card").innerHTML = `
   <div class="card-img-container">
       <a href="./album.html?id=${idAlbum}"><img src="${cover}" class="card-img-top" alt="ALBUM IMG"></a>
@@ -127,7 +127,7 @@ function songCard(idAlbum, idArtist, albumTitle, artistName, cover) {
   `;
 }
 
-function artistCard(idArtist, picture, artistName, idAlbum, artistFan) {
+async function artistCard(idArtist, picture, artistName, idAlbum, artistFan) {
   document.getElementById("artist-card").innerHTML = `
   <div class="card-img-container">
       <a href="./artist.html?=${idArtist}"><img src="${picture}" class="card-img-top" alt="ALBUM IMG"></a>
@@ -151,7 +151,7 @@ async function albumClick(albumCard) {
   // && albumCard.dataset.idartist === undefined
   let idAlbum = "";
   let idArtist = "";
-  if (albumCard=== undefined) {
+  if (albumCard === undefined) {
     idAlbum = new URLSearchParams(window.location.search).get("idalbum");
     idArtist = new URLSearchParams(window.location.search).get("idartist");
   } else {
